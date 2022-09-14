@@ -1,43 +1,144 @@
-public interface List { 
- public boolean isEmpty(); 
-// returns true if the list is empty, false otherwise 
- 
-public int size(); 
-// returns the number of items in the list 
- public void add(Object item); 
-// adds an item to the list 
-// item is added at the end of the list 
- public void add(int index, Object item); // adds an item to the list at the given index // item is added at the given index; // the indices start from 1. 
- 
-public void remove(int index); 
-// removes the item from the list that has the given index 
- public void remove(Object item); // removes an item from the list 
-// removes the first item in the list whose equal method matches  
-// that of the given item 
- 
-public List duplicate(); 
-// creates a duplicate of the list 
-// returns a copy of the linked list 
- 
-public List duplicateReversed(); 
-// creates a duplicate of the list with the nodes in reverse order 
-// returns a copy of the linked list with the nodes in reverse order  
-}
+public class LinkedList{
 
+    // initialize Node as public...
+    Node head;
 
-public class LinkedList implements List{
+    // established Node Class
+    class Node {
+        
+        String data;
+        Node next;
 
-    private Node head;
-    private int size = 0;
-
-    public LinkedList(){ 
-
+        Node(String data) {
+            this.data = data;
+            this.next = null;
+        }
     }
 
+    // construct function for adding node at first/middle/last...
+    public void addNode(String data) {
+
+        Node newNode = new Node(data);
+        
+        if(head == null) {
+
+            head = newNode;
+            return;
+        }
+
+        else {
+            
+            Node currNode = head;
+        
+            while(currNode.next != null) {
+
+                currNode = currNode.next;
+            }
+
+            currNode.next = newNode;
+            }
+    }
+
+    // isEmpty method return true if linkedlist is empty else false...
+    public void isEmpty() {
+        if(head == null)
+            System.out.println("true");
+        else 
+            System.out.println("false");
+    }
+
+    // size method will return size of the linkedlist...
+    public void size() {
+
+        int count = 0;
+
+        if(head == null) {
+
+            count = 0;
+
+        }
+        else {
+
+            Node currNode = head;
+
+            while(currNode != null) {
+
+                count++;
+                currNode = currNode.next;
+            }
+
+        }
+
+        System.out.println(count);
+    }
+
+    // removeNode method will remove node from linkedlist...
+    public void removeNode(String data) {
+
+        if(head == null) {
+
+            System.out.println("No Nodes available!");
+
+        }
+        else if(head.data == data) {
+
+            head = head.next;
+        }
+        else {
+
+            Node currNode = head;
+            Node prevNode = null;
+
+            while(currNode.next != null) {
+                    
+                    if(currNode.data == data) {
+
+                        prevNode.next = currNode.next;
+                        return;
+                    }
+                prevNode = currNode;
+                currNode = currNode.next;
+            }
+
+            
+        }
+    }
+
+    
+    // construct method for printing nodes...
+    public void Print() {
+
+        if(head == null) {
+
+            System.out.println("Linkedlist is empty!");
+
+        }
+        else {
+
+            Node currNode = head;
+
+            while(currNode != null) {
+
+                System.out.print(currNode.data + " -> ");
+                currNode = currNode.next;
+            }
+            System.out.println("NULL");
+        }
+    }
 
     public static void main(String[] args) {
 
+        LinkedList myMethod = new LinkedList();
 
+        myMethod.addNode("A");
+        myMethod.addNode("B");
+        myMethod.addNode("C");
+        myMethod.Print();       
+        myMethod.isEmpty();
+        myMethod.size();
+        myMethod.removeNode("B");
+        System.out.println("After deleting node...");
+        myMethod.Print();       
 
     }
 }
