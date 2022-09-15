@@ -2,12 +2,12 @@
 
 ## Steps to setup environment : 
 
-### Install JDK (Java Development Kit) LTS Version
+### 1. Install JDK (Java Development Kit) LTS Version
 
-#### Set JDK path from Environmental Variables
+### 2. Set JDK path from Environmental Variables
 
-### Install VS (Visual Studio) Code Editor
+### 3. Install VS (Visual Studio) Code Editor
 
-### Install "Code Runner" Extension in VS Code
+### 4. Install "Code Runner" Extension in VS Code
 
 #### Enjoy!
